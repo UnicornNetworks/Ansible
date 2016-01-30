@@ -14,17 +14,133 @@
     upgrade: safe
   tags: apt
 
+- name: disable net modules
+  become: yes
+  become_method: sudo
+  copy:
+    src: disablenet.conf
+    dest: /etc/modprobe.d/disablenet.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: modprobe
+
+- name: disable file system modules
+  become: yes
+  become_method: sudo
+  copy:
+    src: disablemnt.conf
+    dest: /etc/modprobe.d/disablemnt.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: modprobe
+
+- name: systemd system.conf
+  become: yes
+  become_method: sudo
+  copy:
+    src: system.conf
+    dest: /etc/systemd/system.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags: systemd
+
+- name: systemd user.conf
+  become: yes
+  become_method: sudo
+  copy:
+    src: user.conf
+    dest: /etc/systemd/user.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags: systemd
+
+- name: systemd journald.conf
+  become: yes
+  become_method: sudo
+  copy:
+    src: journald.conf
+    dest: /etc/systemd/journald.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags: systemd
+
+- name: timesyncd.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: timesyncd.j2
+    dest: /etc/systemd/timesyncd.conf
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - reload systemd
+  tags: systemd
+
+- name: hosts.allow
+  become: yes
+  become_method: sudo
+  copy:
+    src: hosts.allow
+    dest: /etc/hosts.allow
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: hosts.allow
+
+- name: hosts.deny
+  become: yes
+  become_method: sudo
+  copy:
+    src: hosts.deny
+    dest: /etc/hosts.deny
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: hosts.deny
+
+- name: login.defs
+  become: yes
+  become_method: sudo
+  copy:
+    src: login.defs
+    dest: /etc/login.defs
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: login.defs
+
 - name: sysctl
   become: yes
   become_method: sudo
   template:
-    src: sysctl.conf
+    src: sysctl.j2
     dest: /etc/sysctl.conf
     backup: yes
     mode: 0600
     owner: root
     group: root
   notify:
-        - restart sysctl
+    - restart sysctl
   tags: sysctl
 ...
