@@ -21,10 +21,10 @@
   become: yes
   become_method: sudo
   template:
-    src: docker.j2
+    src: docker.repo.j2
     dest: /etc/apt/sources.list.d/docker.list
     backup: yes
-    mode: 0600
+    mode: 0644
     owner: root
     group: root
   tags: docker
@@ -49,8 +49,8 @@
 - name: docker.service
   become: yes
   become_method: sudo
-  copy:
-    src: docker.service
+  template:
+    src: docker.service.j2
     dest: /etc/systemd/system/docker.service
     backup: yes
     mode: 0644

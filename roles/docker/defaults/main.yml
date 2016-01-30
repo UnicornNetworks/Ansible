@@ -1,4 +1,5 @@
 ---
 repo: main
 gpg_fingerprint: 58118E89F3A912897C070ADBF76221572C52609D
+daemon_opts: "--icc=false -s overlay -H fd://"
 ...
