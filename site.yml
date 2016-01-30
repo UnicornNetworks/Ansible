@@ -1,0 +1,4 @@
+---
+- include: all.yml
+- include: proxy_containers.yml
+...

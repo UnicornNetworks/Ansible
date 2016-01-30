@@ -1,0 +1,11 @@
+---
+- name: restart sysctl
+  become: yes
+  become_method: sudo
+  service: name=systemd-sysctl state=restarted
+
+- name: reload systemd
+  become: yes
+  become_method: sudo
+  command: systemctl daemon-reload
+...

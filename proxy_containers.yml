@@ -1,0 +1,5 @@
+---
+- hosts: proxy
+  roles:
+    - proxy_containers
+...

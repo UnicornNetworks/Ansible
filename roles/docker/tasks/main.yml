@@ -1,0 +1,87 @@
+---
+- name: apt-transport-https installation
+  become: yes
+  become_method: sudo
+  apt:
+    name: apt-transport-https
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: docker gpg key
+  become: yes
+  become_method: sudo
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "{{ gpg_fingerprint }}"
+    state: present
+  tags: docker
+
+- name: apt docker.list
+  become: yes
+  become_method: sudo
+  template:
+    src: docker.j2
+    dest: /etc/apt/sources.list.d/docker.list
+    backup: yes
+    mode: 0600
+    owner: root
+    group: root
+  tags: docker
+
+- name: apt update
+  become: yes
+  become_method: sudo
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: docker
+  become: yes
+  become_method: sudo
+  apt:
+    name: docker-engine
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  tags: docker
+
+- name: docker.service
+  become: yes
+  become_method: sudo
+  copy:
+    src: docker.service
+    dest: /etc/systemd/system/docker.service
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+        - reload systemd
+        - restart docker
+  tags: docker
+
+- name: python-pip
+  become: yes
+  become_method: sudo
+  apt:
+    name: python-pip
+    state: latest
+    install_recommends: no
+  tags: python
+
+- name: docker-py
+  easy_install:
+    name: docker-py
+    state: latest
+  tags: docker
+
+- name: docker running and enabled
+  become: yes
+  become_method: sudo
+  service:
+    name: docker
+    state: running
+    enabled: yes
+  tags: docker
+...
