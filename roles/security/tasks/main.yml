@@ -17,8 +17,8 @@
 - name: disable net modules
   become: yes
   become_method: sudo
-  copy:
-    src: disablenet.conf
+  template:
+    src: disablenet.conf.j2
     dest: /etc/modprobe.d/disablenet.conf
     backup: yes
     mode: 0644
@@ -29,8 +29,8 @@
 - name: disable file system modules
   become: yes
   become_method: sudo
-  copy:
-    src: disablemnt.conf
+  template:
+    src: disablemnt.conf.j2
     dest: /etc/modprobe.d/disablemnt.conf
     backup: yes
     mode: 0644
@@ -41,8 +41,8 @@
 - name: systemd system.conf
   become: yes
   become_method: sudo
-  copy:
-    src: system.conf
+  template:
+    src: system.conf.j2
     dest: /etc/systemd/system.conf
     backup: yes
     mode: 0644
@@ -55,8 +55,8 @@
 - name: systemd user.conf
   become: yes
   become_method: sudo
-  copy:
-    src: user.conf
+  template:
+    src: user.conf.j2
     dest: /etc/systemd/user.conf
     backup: yes
     mode: 0644
@@ -69,8 +69,8 @@
 - name: systemd journald.conf
   become: yes
   become_method: sudo
-  copy:
-    src: journald.conf
+  template:
+    src: journald.conf.j2
     dest: /etc/systemd/journald.conf
     backup: yes
     mode: 0644
@@ -84,7 +84,7 @@
   become: yes
   become_method: sudo
   template:
-    src: timesyncd.j2
+    src: timesyncd.conf.j2
     dest: /etc/systemd/timesyncd.conf
     backup: yes
     mode: 0644
@@ -97,8 +97,8 @@
 - name: hosts.allow
   become: yes
   become_method: sudo
-  copy:
-    src: hosts.allow
+  template:
+    src: hosts.allow.j2
     dest: /etc/hosts.allow
     backup: yes
     mode: 0644
@@ -109,8 +109,8 @@
 - name: hosts.deny
   become: yes
   become_method: sudo
-  copy:
-    src: hosts.deny
+  template:
+    src: hosts.deny.j2
     dest: /etc/hosts.deny
     backup: yes
     mode: 0644
@@ -121,8 +121,8 @@
 - name: login.defs
   become: yes
   become_method: sudo
-  copy:
-    src: login.defs
+  template:
+    src: login.defs.j2
     dest: /etc/login.defs
     backup: yes
     mode: 0644
@@ -134,7 +134,7 @@
   become: yes
   become_method: sudo
   template:
-    src: sysctl.j2
+    src: sysctl.conf.j2
     dest: /etc/sysctl.conf
     backup: yes
     mode: 0600

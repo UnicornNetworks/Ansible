@@ -1,4 +1,4 @@
-# {{ ansible_managed }
+# {{ ansible_managed }}
 
 MAIL_DIR        /var/mail
 
@@ -25,7 +25,7 @@ TTYPERM		0600
 
 ERASECHAR	0177
 KILLCHAR	025
-UMASK		077
+UMASK		{{ umask }}
 
 PASS_MAX_DAYS		30
 PASS_MIN_DAYS		1
