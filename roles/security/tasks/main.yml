@@ -155,4 +155,38 @@
     owner: root
     group: root
   tags: limits.conf
+
+- name: package installation
+  become: yes
+  become_method: sudo
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: no
+  with_items:
+    - acct
+    - aide-common
+    - apparmor-profiles
+    - apparmor-utils
+    - auditd
+    - haveged
+    - libpam-cracklib
+    - libpam-tmpdir
+    - openssh-server
+    - rkhunter
+  tags: packages
+
+- name: audit.rules
+  become: yes
+  become_method: sudo
+  template:
+    src: audit.rules.j2
+    dest: /etc/audit/audit.rules
+    backup: yes
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+      - restart auditd
+  tags: audit.rules
 ...
