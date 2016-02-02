@@ -62,6 +62,15 @@
         - restart docker
   tags: docker
 
+- name: docker running and enabled
+  become: yes
+  become_method: sudo
+  service:
+    name: docker
+    state: running
+    enabled: yes
+  tags: docker
+
 - name: python-pip
   become: yes
   become_method: sudo
@@ -75,14 +84,5 @@
   easy_install:
     name: docker-py
     state: latest
-  tags: docker
-
-- name: docker running and enabled
-  become: yes
-  become_method: sudo
-  service:
-    name: docker
-    state: running
-    enabled: yes
   tags: docker
 ...
