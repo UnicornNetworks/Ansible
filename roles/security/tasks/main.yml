@@ -176,6 +176,19 @@
     - rkhunter
   tags: packages
 
+- name: virtualbox package installation
+  become: yes
+  become_method: sudo
+  apt:
+    name: "{{ item }}"
+    state: latest
+    install_recommends: no
+  with_items:
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
+  when: ansible_bios_version == "VirtualBox"
+  tags: virtualbox
+
 - name: audit.rules
   become: yes
   become_method: sudo
