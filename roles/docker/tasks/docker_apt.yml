@@ -1,0 +1,40 @@
+---
+- name: docker gpg key
+  become: yes
+  become_method: sudo
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "{{ gpg_fingerprint }}"
+    state: present
+  tags: docker
+
+- name: apt docker.list
+  become: yes
+  become_method: sudo
+  template:
+    src: docker.repo.j2
+    dest: /etc/apt/sources.list.d/docker.list
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  tags: docker
+
+- name: apt update
+  become: yes
+  become_method: sudo
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  tags: apt
+
+- name: docker
+  become: yes
+  become_method: sudo
+  apt:
+    name: docker-engine
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  tags: docker
+...

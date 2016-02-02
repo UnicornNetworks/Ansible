@@ -1,0 +1,10 @@
+---
+- name: apt-transport-https installation
+  become: yes
+  become_method: sudo
+  apt:
+    name: apt-transport-https
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+...

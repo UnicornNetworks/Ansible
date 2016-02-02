@@ -1,0 +1,16 @@
+---
+- name: python-pip
+  become: yes
+  become_method: sudo
+  apt:
+    name: python-pip
+    state: latest
+    install_recommends: no
+  tags: python
+
+- name: docker-py
+  easy_install:
+    name: docker-py
+    state: latest
+  tags: docker
+...
