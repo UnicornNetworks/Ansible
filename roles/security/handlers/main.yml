@@ -17,4 +17,19 @@
   become: yes
   become_method: sudo
   command: systemctl daemon-reload
+
+- name: rkhunter propupd
+  become: yes
+  become_method: sudo
+  command: rkhunter --propupd
+
+- name: enable aidecheck
+  become: yes
+  become_method: sudo
+  command: systemctl reenable aidecheck.timer
+
+- name: start aidecheck
+  become: yes
+  become_method: sudo
+  command: systemctl start aidecheck.timer
 ...
