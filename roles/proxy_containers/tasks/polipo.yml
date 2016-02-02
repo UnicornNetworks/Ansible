@@ -1,0 +1,15 @@
+---
+- name: polipo container
+  docker:
+    name: polipo
+    image: konstruktoid/polipo
+    command: proxyAddress=::0 allowedClients=192.168.1.0/24
+    state: reloaded
+    ports:
+    - "0.0.0.0:8123:8123"
+    cap_drop: all
+    pull: always
+    restart_policy: on-failure
+    restart_policy_retry: 3
+  tags: docker_container
+...
