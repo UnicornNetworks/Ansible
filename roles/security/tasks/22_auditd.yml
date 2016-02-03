@@ -1,0 +1,15 @@
+---
+- name: audit.rules
+  become: yes
+  become_method: sudo
+  template:
+    src: audit.rules.j2
+    dest: /etc/audit/audit.rules
+    backup: yes
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+      - restart auditd
+  tags: audit.rules
+...
