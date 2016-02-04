@@ -2,10 +2,24 @@
 - name: restart docker
   become: yes
   become_method: sudo
-  service: name=docker state=restarted
+  service:
+    name: docker
+    state: restarted
 
 - name: reload systemd
   become: yes
   become_method: sudo
   command: systemctl daemon-reload
+
+- name: restart auditd
+  become: yes
+  become_method: sudo
+  service:
+    name: auditd
+    state: restarted
+
+- name: generate auditd
+  become: yes
+  become_method: sudo
+  command: augenrules
 ...
