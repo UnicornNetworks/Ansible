@@ -1,15 +1,10 @@
 # {{ ansible_managed }}
 
 daily
-
 su root syslog
-
 rotate 7
-
 create
-
 dateext
-
 compress
 
 compresscmd /usr/bin/xz
@@ -31,5 +26,3 @@ include /etc/logrotate.d
     create 0600 root utmp
     rotate 1
 }
-
-
