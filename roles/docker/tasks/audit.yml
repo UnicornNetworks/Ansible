@@ -11,5 +11,7 @@
   notify:
         - generate auditd
         - restart auditd
-  tags: docker,audit
+  tags:
+    - docker
+    - auditd
 ...

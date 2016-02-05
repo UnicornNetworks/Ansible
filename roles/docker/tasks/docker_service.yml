@@ -6,5 +6,6 @@
     name: docker
     state: running
     enabled: yes
-  tags: docker
+  tags:
+    - docker
 ...

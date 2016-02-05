@@ -6,7 +6,10 @@
     keyserver: keyserver.ubuntu.com
     id: "{{ gpg_fingerprint }}"
     state: present
-  tags: docker
+  ignore_errors:
+    - yes
+  tags:
+    - docker
 
 - name: apt docker.list
   become: yes
@@ -18,7 +21,9 @@
     mode: 0644
     owner: root
     group: root
-  tags: docker
+  tags:
+    - docker
+    - apt
 
 - name: apt update
   become: yes
@@ -26,7 +31,8 @@
   apt:
     update_cache: yes
     cache_valid_time: 3600
-  tags: apt
+  tags:
+    - apt
 
 - name: docker
   become: yes
@@ -36,5 +42,6 @@
     state: latest
     update_cache: yes
     cache_valid_time: 3600
-  tags: docker
+  tags:
+    - docker
 ...

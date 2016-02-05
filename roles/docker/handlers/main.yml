@@ -5,11 +5,15 @@
   service:
     name: docker
     state: restarted
+  tags:
+    - docker
 
 - name: reload systemd
   become: yes
   become_method: sudo
   command: systemctl daemon-reload
+  tags:
+    - systemd
 
 - name: restart auditd
   become: yes
@@ -17,9 +21,13 @@
   service:
     name: auditd
     state: restarted
+  tags:
+    - auditd
 
 - name: generate auditd
   become: yes
   become_method: sudo
   command: augenrules
+  tags:
+    - auditd
 ...
