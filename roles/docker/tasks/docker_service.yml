@@ -1,4 +1,18 @@
 ---
+- name: docker systemd service
+  become: yes
+  become_method: sudo
+  template:
+    src: docker.service.j2
+    dest: /lib/systemd/system/docker.service
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart docker
+  tags:
+    - docker
+
 - name: docker running and enabled
   become: yes
   become_method: sudo
