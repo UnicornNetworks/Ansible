@@ -11,5 +11,6 @@
     group: root
   notify:
     - restart sysctl
-  tags: sysctl
+  tags:
+    - sysctl
 ...

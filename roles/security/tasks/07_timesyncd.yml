@@ -11,5 +11,7 @@
     group: root
   notify:
     - reload systemd
-  tags: systemd
+  tags:
+    - systemd
+    - timesyncd
 ...

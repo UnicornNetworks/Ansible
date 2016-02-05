@@ -12,5 +12,7 @@
   notify:
       - generate auditd
       - restart auditd
-  tags: audit.rules
+  tags:
+    - auditd
+    - audit.rules
 ...

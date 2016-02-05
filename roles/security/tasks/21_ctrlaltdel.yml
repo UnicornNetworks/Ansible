@@ -3,5 +3,6 @@
   become: yes
   become_method: sudo
   command: systemctl mask ctrl-alt-del.target
-  tags: ctrl-alt-del
+  tags:
+    - ctrl-alt-del
 ...

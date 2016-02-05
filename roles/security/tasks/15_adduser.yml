@@ -9,7 +9,8 @@
     mode: 0644
     owner: root
     group: root
-  tags: adduser.conf
+  tags:
+    - adduser.conf
 
 - name: useradd
   become: yes
@@ -21,5 +22,6 @@
     mode: 0644
     owner: root
     group: root
-  tags: useradd
+  tags:
+    - useradd
 ...

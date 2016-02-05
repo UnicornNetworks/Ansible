@@ -17,7 +17,9 @@
     - libpam-tmpdir
     - openssh-server
     - rkhunter
-  tags: packages
+  tags:
+    - apt
+    - packages
 
 - name: virtualbox package installation
   become: yes
@@ -30,5 +32,8 @@
     - virtualbox-guest-dkms
     - virtualbox-guest-utils
   when: ansible_bios_version == "VirtualBox"
-  tags: virtualbox
+  tags:
+    - apt
+    - packages
+    - virtualbox
 ...

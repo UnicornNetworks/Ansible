@@ -11,7 +11,9 @@
     group: root
   notify:
     - reload systemd
-  tags: systemd
+  tags:
+    - systemd
+    - system.conf
 
 - name: systemd user.conf
   become: yes
@@ -25,5 +27,7 @@
     group: root
   notify:
     - reload systemd
-  tags: systemd
+  tags:
+    - systemd
+    - user.conf
 ...

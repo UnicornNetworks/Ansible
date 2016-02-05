@@ -11,5 +11,7 @@
     group: root
   notify:
     - rkhunter propupd
-  tags: rkhunter
+  tags:
+    - packages
+    - rkhunter
 ...
