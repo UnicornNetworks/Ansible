@@ -11,5 +11,7 @@
     pull: always
     restart_policy: on-failure
     restart_policy_retry: 3
-  tags: docker_container
+  tags:
+    - docker_container
+    - polipo
 ...
