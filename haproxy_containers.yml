@@ -1,0 +1,8 @@
+---
+- hosts: proxy
+  tasks: []
+
+- hosts: haproxy
+  roles:
+    - haproxy_containers
+...

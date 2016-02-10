@@ -1,0 +1,46 @@
+---
+- name: create haproxy directory
+  become: yes
+  become_method: sudo
+  file:
+    path: /etc/haproxy/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - haproxy
+
+- name: add haproxy config
+  become: yes
+  become_method: sudo
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+    - haproxy
+
+- name: haproxy container
+  docker:
+    name: haproxy
+    image: konstruktoid/haproxy
+    state: reloaded
+    ports:
+    - "0.0.0.0:8080:8080"
+    cap_drop: all
+    cap_add:
+      - sys_chroot
+      - setgid
+      - setuid
+    volumes:
+      - /etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro
+    pull: always
+    restart_policy: on-failure
+    restart_policy_retry: 3
+  tags:
+    - docker_container
+    - haproxy
+...

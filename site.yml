@@ -1,4 +1,5 @@
 ---
 - include: all.yml
 - include: proxy_containers.yml
+- include: haproxy_containers.yml
 ...
