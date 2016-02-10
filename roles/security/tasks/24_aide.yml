@@ -4,7 +4,7 @@
   become_method: sudo
   template:
     src: aidecheck.service.j2
-    dest: /etc/systemd/system/aidecheck.service
+    dest: /lib/systemd/system/aidecheck.service
     backup: yes
     mode: 0644
     owner: root
@@ -17,7 +17,7 @@
   become_method: sudo
   template:
     src: aidecheck.timer.j2
-    dest: /etc/systemd/system/aidecheck.timer
+    dest: /lib/systemd/system/aidecheck.timer
     backup: yes
     mode: 0644
     owner: root
