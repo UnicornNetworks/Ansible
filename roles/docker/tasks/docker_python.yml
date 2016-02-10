@@ -1,15 +1,21 @@
 ---
-- name: python-pip
+- name: remove python-pip deb
   become: yes
   become_method: sudo
   apt:
     name: python-pip
-    state: latest
-    install_recommends: no
+    state: absent
+  tags: python
+
+- name: install python-pip
+  become: yes
+  become_method: sudo
+  easy_install:
+    name: pip
   tags:
     - python
 
-- name: docker-py
+- name: install docker-py
   easy_install:
     name: docker-py
   tags:
