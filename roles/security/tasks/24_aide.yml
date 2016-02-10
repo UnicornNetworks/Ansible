@@ -28,4 +28,16 @@
     - start aidecheck
   tags:
     - aide
+
+- name: mask virtualbox aidecheck
+  shell: echo 'disabling aide timer on VirtualBox'
+  become: yes
+  become_method: sudo
+  when: ansible_bios_version == "VirtualBox"
+  notify:
+    - mask aidecheck
+    - disable aidecheck
+    - reload systemd
+  tags:
+    - aide
 ...
