@@ -37,4 +37,14 @@
   become: yes
   become_method: sudo
   command: systemctl start aidecheck.timer
+
+- name: disable aidecheck
+  become: yes
+  become_method: sudo
+  command: systemctl disable aidecheck.timer
+
+- name: mask aidecheck
+  become: yes
+  become_method: sudo
+  command: systemctl mask aidecheck.timer
 ...
