@@ -22,12 +22,12 @@ defaults
   timeout check           10s
   maxconn                 3000
 
-frontend http-in
-  bind *:8080
-  default_backend http-out
+frontend proxy-in
+  bind *:{{ proxy_bind_port }}
+  default_backend proxy-out
 
-backend http-out
+backend proxy-out
   balance roundrobin
   {% for host in groups['proxy'] %}
-    server {{ host }} {{ hostvars[host]['ansible_' + iface]['ipv4']['address'] }}:8123
+  server {{ host }} {{ hostvars[host]['ansible_' + iface]['ipv4']['address'] }}:{{ proxy_port }} check
   {% endfor %}

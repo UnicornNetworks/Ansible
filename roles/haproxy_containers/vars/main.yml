@@ -1,3 +1,5 @@
 ---
 iface: '{{ ansible_default_ipv4.interface }}'
+proxy_bind_port: 8080
+proxy_port: 8123
 ...
