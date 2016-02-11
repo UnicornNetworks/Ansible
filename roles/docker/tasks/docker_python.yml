@@ -21,14 +21,12 @@
   become_method: sudo
   easy_install:
     name: pip
-    state: latest
   tags:
     - python
 
 - name: install docker-py
   easy_install:
     name: docker-py
-    state: latest
   tags:
     - docker
     - python
