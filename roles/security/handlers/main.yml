@@ -47,4 +47,11 @@
   become: yes
   become_method: sudo
   command: systemctl mask aidecheck.timer
+
+- name: restart sshd
+  become: yes
+  become_method: sudo
+  service:
+    name: sshd
+    state: restarted
 ...
