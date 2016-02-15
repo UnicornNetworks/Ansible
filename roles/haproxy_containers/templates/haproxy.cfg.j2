@@ -2,16 +2,20 @@
 
 global
   log         127.0.0.1 local2
-
   chroot      /var/lib/haproxy
   pidfile     /var/run/haproxy.pid
   maxconn     4000
   user        haproxy
   group       haproxy
-
   stats socket /var/lib/haproxy/stats
 
 defaults
+  errorfile 408 /dev/null
+  log global
+  mode    http
+  option  dontlognull
+  option  redispatch
+  option  forwardfor
   retries                 3
   timeout http-request    10s
   timeout queue           1m
@@ -20,14 +24,14 @@ defaults
   timeout server          1m
   timeout http-keep-alive 10s
   timeout check           10s
-  maxconn                 3000
 
 frontend proxy-in
   bind *:{{ proxy_bind_port }}
   default_backend proxy-out
 
 backend proxy-out
+  mode http
   balance roundrobin
   {% for host in groups['proxy'] %}
-  server {{ host }} {{ hostvars[host]['ansible_' + iface]['ipv4']['address'] }}:{{ proxy_port }} check
+  server {{ host }} {{ hostvars[host]['ansible_' + iface]['ipv4']['address'] }}:{{ proxy_port }} check on-marked-down shutdown-sessions
   {% endfor %}
