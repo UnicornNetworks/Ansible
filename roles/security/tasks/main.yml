@@ -17,5 +17,6 @@
 - include: 21_ctrlaltdel.yml
 - include: 22_auditd.yml
 - include: 24_aide.yml
+- include: 32_resolvedconf.yml
 - include: 33_rkhunter.yml
 ...
