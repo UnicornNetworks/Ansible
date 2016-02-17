@@ -1,4 +1,16 @@
 ---
+- name: allow privoxy traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ privoxy_client_net }}"
+    port: "{{ privoxy_port }}"
+    proto: tcp
+  tags:
+    - ufw
+    - privoxy
+
 - name: create privoxy directory
   become: yes
   become_method: sudo
@@ -30,13 +42,15 @@
     command: --no-daemon --user privoxy /etc/privoxy/config
     state: reloaded
     ports:
-    - "{{ privoxy_listen_address }}:{{ privoxy_port }}:{{ privoxy_port }}"
+    - "{{ privoxy_bind_address }}:{{ privoxy_port }}:{{ privoxy_port }}"
     cap_drop: all
     cap_add:
       - setgid
       - setuid
     volumes:
       - /etc/privoxy/config:/etc/privoxy/config:ro
+    links:
+      - "polipo"
     pull: always
     restart_policy: on-failure
     restart_policy_retry: 3

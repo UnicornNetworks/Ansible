@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-listen-address {{ privoxy_listen_address }}:{{ privoxy_port}}
+listen-address {{ privoxy_bind_address }}:{{ privoxy_port }}
 
 accept-intercepted-requests 0
 allow-cgi-request-crunching 0
@@ -21,4 +21,4 @@ socket-timeout 300
 split-large-forms 0
 toggle  1
 tolerate-pipelining 1
-forward / localhost:8123
+forward / polipo:{{ polipo_port }}
