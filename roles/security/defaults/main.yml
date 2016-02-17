@@ -3,6 +3,7 @@ umask: 077
 ntp: 0.ubuntu.pool.ntp.org 1.ubuntu.pool.ntp.org
 fallback_ntp: 2.ubuntu.pool.ntp.org 3.ubuntu.pool.ntp.org
 ssh_allow_groups: sudo
+sshd_admin_net: 192.168.1.0/24
 dns: 127.0.0.1
 fallback_dns: 8.8.8.8 8.8.4.4
 dnssec: allow-downgrade
