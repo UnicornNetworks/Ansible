@@ -1,4 +1,11 @@
 ---
-privoxy_listen_address: 0.0.0.0
+polipo_client_net: 127.0.0.1
+polipo_bind_address: 127.0.0.1
+polipo_port: 8123
+privoxy_client_net: 192.168.1.0/24
+privoxy_bind_address: 0.0.0.0
 privoxy_port: 8118
+acng_client_net: 192.168.1.0/24
+acng_bind_address: 0.0.0.0
+acng_port: 3124
 ...
