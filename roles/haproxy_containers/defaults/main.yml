@@ -2,5 +2,6 @@
 iface: '{{ ansible_default_ipv4.interface }}'
 haproxy_bind_port: 8080
 haproxy_bind_address: 0.0.0.0
+haproxy_client_net: 0.0.0.0
 proxy_port: 8123
 ...
