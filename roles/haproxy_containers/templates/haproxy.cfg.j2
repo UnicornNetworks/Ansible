@@ -26,7 +26,7 @@ defaults
   timeout check           10s
 
 frontend proxy-in
-  bind *:{{ proxy_bind_port }}
+  bind {{ haproxy_bind_address }}:{{ haproxy_bind_port }}
   default_backend proxy-out
 
 backend proxy-out
