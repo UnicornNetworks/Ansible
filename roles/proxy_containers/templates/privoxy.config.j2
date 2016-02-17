@@ -1,0 +1,24 @@
+# {{ ansible_managed }}
+
+listen-address {{ privoxy_listen_address }}:{{ privoxy_port}}
+
+accept-intercepted-requests 0
+allow-cgi-request-crunching 0
+buffer-limit 4096
+confdir /etc/privoxy
+debug   4096
+debug   8192
+enable-edit-actions 0
+enable-proxy-authentication-forwarding 0
+enable-remote-http-toggle  0
+enable-remote-toggle  0
+enforce-blocks 0
+filterfile default.filter
+forwarded-connect-retries  0
+keep-alive-timeout 5
+logdir /var/log/privoxy
+socket-timeout 300
+split-large-forms 0
+toggle  1
+tolerate-pipelining 1
+forward / localhost:8123

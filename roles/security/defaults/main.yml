@@ -6,4 +6,5 @@ ssh_allow_groups: sudo
 dns: 127.0.0.1
 fallback_dns: 8.8.8.8 8.8.4.4
 dnssec: allow-downgrade
+iface: '{{ ansible_default_ipv4.interface }}'
 ...

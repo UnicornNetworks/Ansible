@@ -1,0 +1,4 @@
+---
+privoxy_listen_address: 0.0.0.0
+privoxy_port: 8118
+...
