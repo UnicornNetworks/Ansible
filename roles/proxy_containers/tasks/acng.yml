@@ -1,4 +1,16 @@
 ---
+- name: allow apt-cacher-ng traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ acng_client_net }}"
+    port: "{{ acng_port }}"
+    proto: tcp
+  tags:
+    - ufw
+    - apt-cacher-ng
+
 - name: apt-cacher-ng container
   docker:
     name: apt-cacher-ng
@@ -6,7 +18,7 @@
     command: VerboseLog=1 Debug=7 ForeGround=1 PassThroughPattern=.*
     state: reloaded
     ports:
-    - "0.0.0.0:3124:3124"
+    - "{{ acng_bind_address }}:{{ acng_port }}:{{ acng_port }}"
     cap_drop: all
     pull: always
     restart_policy: on-failure
