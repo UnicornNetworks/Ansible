@@ -19,4 +19,5 @@
 - include: 24_aide.yml
 - include: 32_resolvedconf.yml
 - include: 33_rkhunter.yml
+- include: 34_issue.yml
 ...
