@@ -1,12 +1,24 @@
 ---
+- name: allow polipo traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ polipo_client_net }}"
+    port: "{{ polipo_port }}"
+    proto: tcp
+  tags:
+    - ufw
+    - polipo
+
 - name: polipo container
   docker:
     name: polipo
     image: konstruktoid/polipo
-    command: proxyAddress=::0 allowedClients=192.168.1.0/24
+    command: proxyAddress=::0
     state: reloaded
     ports:
-    - "0.0.0.0:8123:8123"
+    - "{{ polipo_bind_address }}:{{ polipo_port }}:{{ polipo_port }}"
     cap_drop: all
     pull: always
     restart_policy: on-failure
