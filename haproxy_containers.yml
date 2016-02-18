@@ -3,6 +3,7 @@
   tasks: []
 
 - hosts: haproxy
+  serial: 50%
   roles:
     - haproxy_containers
 ...
