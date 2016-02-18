@@ -25,6 +25,8 @@
     - python
 
 - name: install docker-py
+  become: yes
+  become_method: sudo
   easy_install:
     name: docker-py
   tags:
