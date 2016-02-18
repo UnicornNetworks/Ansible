@@ -1,0 +1,7 @@
+---
+- hosts: bootstrap
+  gather_facts: False
+  roles:
+    - bootstrap
+    - security
+...

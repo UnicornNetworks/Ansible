@@ -1,0 +1,14 @@
+---
+- name: bootstrap - apt update
+  become: yes
+  become_method: sudo
+  raw: apt update
+
+- name: bootstrap - python installation
+  become: yes
+  become_method: sudo
+  raw: apt -y install python --no-install-recommends
+
+- name: bootstrap - gather facts
+  setup:
+...
