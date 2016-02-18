@@ -1,5 +1,4 @@
 ---
 - include: polipo.yml
-- include: privoxy.yml
 - include: acng.yml
 ...

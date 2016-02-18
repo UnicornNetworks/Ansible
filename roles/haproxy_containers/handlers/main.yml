@@ -1,0 +1,8 @@
+---
+- name: restart docker
+  become: yes
+  become_method: sudo
+  service:
+    name: docker
+    state: restarted
+...
