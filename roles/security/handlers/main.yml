@@ -54,4 +54,14 @@
   service:
     name: sshd
     state: restarted
+
+- name: apt-get autoremove
+  become: yes
+  become_method: sudo
+  command: apt-get -y autoremove
+
+- name: apt-get clean
+  become: yes
+  become_method: sudo
+  command: apt-get -y clean
 ...

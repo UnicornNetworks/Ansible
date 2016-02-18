@@ -13,6 +13,9 @@
   become_method: sudo
   apt:
     upgrade: safe
+  notify:
+    - apt-get clean
+    - apt-get autoremove
   tags:
     - apt
 ...
