@@ -1,4 +1,16 @@
 ---
+- name: sysctl
+  become: yes
+  become_method: sudo
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes
+  tags:
+    - sysctl
+
 - name: docker systemd service
   become: yes
   become_method: sudo
