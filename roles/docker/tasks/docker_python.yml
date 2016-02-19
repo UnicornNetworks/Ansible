@@ -1,10 +1,11 @@
 ---
-- name: remove python-pip deb
+- name: install python-pip
   become: yes
   become_method: sudo
   apt:
     name: python-pip
-    state: absent
+    state: latest
+    install_recommends: no
   tags: python
 
 - name: install python-setuptools
