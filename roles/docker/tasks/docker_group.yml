@@ -1,0 +1,9 @@
+---
+- name: add user to docker group
+  become: yes
+  become_method: sudo
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+...

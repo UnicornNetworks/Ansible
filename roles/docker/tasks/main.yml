@@ -4,4 +4,5 @@
 - include: docker_service.yml
 - include: docker_python.yml
 - include: audit.yml
+- include: docker_group.yml
 ...
