@@ -21,6 +21,7 @@
     owner: root
     group: root
   notify:
+    - reload systemd
     - restart docker
   tags:
     - docker
@@ -32,6 +33,7 @@
     name: docker
     state: running
     enabled: yes
+  ignore_errors: yes
   tags:
     - docker
 ...

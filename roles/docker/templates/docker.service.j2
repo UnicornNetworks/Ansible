@@ -8,7 +8,11 @@ Requires=docker.socket
 
 [Service]
 Type=notify
+{% if ansible_distribution == "Ubuntu" %}
 ExecStart=/usr/bin/docker daemon {{ daemon_opts }}
+{% else %}
+ExecStart=/usr/bin/docker daemon --icc=false -H fd://
+{% endif %}
 MountFlags=slave
 LimitNOFILE=1048576
 LimitNPROC=1048576

@@ -31,7 +31,7 @@
   with_items:
     - virtualbox-guest-dkms
     - virtualbox-guest-utils
-  when: ansible_bios_version == "VirtualBox"
+  when: ansible_bios_version == "VirtualBox" and ansible_distribution == "Ubuntu"
   tags:
     - apt
     - packages
