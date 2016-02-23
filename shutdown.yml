@@ -1,0 +1,11 @@
+# ansible-playbook --extra-vars="hosts=192.168.1.5" shutdown.yml -K
+---
+- name: shutdown
+  become: yes
+  become_method: sudo
+  hosts: "{{ hosts }}"
+
+  tasks:
+  - command: /sbin/shutdown -h now
+    ignore_errors: yes
+...
