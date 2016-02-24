@@ -1,4 +1,5 @@
 = Ansible
+:icons: font
 
 Docker daemon, containers and security playbooks.
 
