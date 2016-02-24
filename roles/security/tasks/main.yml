@@ -19,7 +19,9 @@
 - include: 22_auditd.yml
 - include: 23_disablemod.yml
 - include: 24_aide.yml
+- include: 26_users.yml
 - include: 32_resolvedconf.yml
 - include: 33_rkhunter.yml
 - include: 34_issue.yml
+- include: 36_lockroot.yml
 ...

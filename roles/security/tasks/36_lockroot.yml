@@ -1,0 +1,8 @@
+---
+- name: lock root account
+  become: yes
+  become_method: sudo
+  command: usermod -L root
+  tags:
+    - users
+...
