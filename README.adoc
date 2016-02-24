@@ -1,0 +1,6 @@
+= Ansible
+
+Docker daemon, containers and security playbooks.
+
+WARNING: This is a lab repository and it may break things.
+
