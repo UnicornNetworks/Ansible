@@ -64,4 +64,9 @@
   become: yes
   become_method: sudo
   command: apt-get -y clean
+
+- name: mask atd
+  become: yes
+  become_method: sudo
+  command: systemctl mask atd.service
 ...
