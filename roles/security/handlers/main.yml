@@ -69,4 +69,9 @@
   become: yes
   become_method: sudo
   command: systemctl mask atd.service
+
+- name: mask apport
+  become: yes
+  become_method: sudo
+  command: systemctl mask apport.service
 ...
