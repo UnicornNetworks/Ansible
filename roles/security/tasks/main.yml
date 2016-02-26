@@ -22,6 +22,7 @@
 - include: 24_aide.yml
 - include: 26_users.yml
 - include: 27_suid.yml
+- include: 31_logindconf.yml
 - include: 32_resolvedconf.yml
 - include: 33_rkhunter.yml
 - include: 34_issue.yml
