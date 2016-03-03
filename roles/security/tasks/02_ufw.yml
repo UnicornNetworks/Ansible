@@ -12,9 +12,11 @@
   become_method: sudo
   ufw:
     rule: allow
-    src: "{{ sshd_admin_net }}"
+    src: "{{ item }}"
     port: 22
     proto: tcp
+  with_items:
+    - " {{ sshd_admin_net }} "
 
 - name: enable ufw
   become: yes
