@@ -3,7 +3,7 @@
   become: yes
   become_method: sudo
   file:
-    path: "{{item}}"
+    path: "{{ item }}"
     state: absent
   ignore_errors: true
   with_items:
@@ -19,7 +19,7 @@
   become_method: sudo
   lineinfile:
     line: "root"
-    dest: "{{item}}"
+    dest: "{{ item }}"
     mode: 0600
     state: present
     create: yes

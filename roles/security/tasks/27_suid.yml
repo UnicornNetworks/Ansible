@@ -3,7 +3,7 @@
   become: yes
   become_method: sudo
   file:
-    path: "{{item}}"
+    path: "{{ item }}"
     mode: 'a-s'
     state: file
     follow: yes
