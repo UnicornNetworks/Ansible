@@ -12,6 +12,7 @@
     - apparmor-profiles
     - apparmor-utils
     - auditd
+    - debsums
     - haveged
     - libpam-cracklib
     - libpam-tmpdir
