@@ -18,4 +18,4 @@ done
 sort "$TMPHOSTS" | uniq > "$KNOWN_HOSTS"
 rm "$TMPHOSTS"
 
-ansible-playbook site.yml --extra-vars "sshd_admin_net=$NETWORK/24" -K
+ansible-playbook all.yml --extra-vars "sshd_admin_net=$NETWORK/24" -K
