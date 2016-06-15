@@ -9,15 +9,17 @@ Requires=docker.socket
 [Service]
 Type=notify
 {% if kernel >= "4" %}
-ExecStart=/usr/bin/docker daemon {{ daemon_opts }}
+ExecStart=/usr/bin/dockerd {{ daemon_opts }}
 {% else %}
-ExecStart=/usr/bin/docker daemon {{ daemon_opts_old_kernel }}
+ExecStart=/usr/bin/dockerd {{ daemon_opts_old_kernel }}
 {% endif %}
-MountFlags=slave
+ExecReload=/bin/kill -s HUP $MAINPID
 LimitNOFILE=1048576
 LimitNPROC=1048576
 LimitCORE=infinity
+TasksMax=infinity
 TimeoutStartSec=0
+Delegate=yes
 
 [Install]
 WantedBy=multi-user.target
