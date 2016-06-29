@@ -1,7 +1,7 @@
 ---
 repo: main
 gpg_fingerprint: 58118E89F3A912897C070ADBF76221572C52609D
-daemon_opts: "--disable-legacy-registry --live-restore --icc=false -s overlay2 -H fd://"
-daemon_opts_old_kernel: "--disable-legacy-registry --live-restore --icc=false -H fd://"
+daemon_opts: "--disable-legacy-registry --live-restore --icc=false -s overlay2 --default-ulimit nproc=512:1024 --default-ulimit nofile=100:200 -H fd://"
+daemon_opts_old_kernel: "--disable-legacy-registry --live-restore --icc=false --default-ulimit nproc=512:1024 --default-ulimit nofile=100:200 -H fd://"
 kernel: "{{ ansible_kernel | first }}"
 ...

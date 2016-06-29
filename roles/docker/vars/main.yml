@@ -1,5 +1,5 @@
 ---
 repo: experimental
-daemon_opts: "--dns=8.8.8.8 --dns=8.8.4.4 --icc=false -s overlay -H fd://"
-daemon_opts_old_kernel: "--dns=8.8.8.8 --dns=8.8.4.4 --icc=false -H fd://"
+daemon_opts: "--dns=8.8.8.8 --dns=8.8.4.4 --disable-legacy-registry --live-restore --icc=false -s overlay2 -H fd://"
+daemon_opts_old_kernel: "--dns=8.8.8.8 --dns=8.8.4.4 --disable-legacy-registry --live-restore --icc=false -H fd://"
 ...
