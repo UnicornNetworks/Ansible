@@ -29,12 +29,14 @@
     image: konstruktoid/haproxy
     state: reloaded
     ports:
-    - "0.0.0.0:8080:8080"
+    - "{{ haproxy_bind_address }}:{{ haproxy_bind_port }}:{{ haproxy_bind_port }}"
     cap_drop: all
     cap_add:
       - sys_chroot
       - setgid
       - setuid
+    ulimits:
+      - nofile:8032:16064
     volumes:
       - /etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro
     pull: always
