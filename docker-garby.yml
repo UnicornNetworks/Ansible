@@ -1,0 +1,6 @@
+---
+- hosts: all
+  serial: 50%
+  roles:
+    - docker-garby
+...
