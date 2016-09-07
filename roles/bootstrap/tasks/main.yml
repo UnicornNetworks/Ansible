@@ -31,4 +31,17 @@
   tags:
     - ufw
     - bootstrap
+
+- name: bootstrap - install aptitude
+  become: yes
+  become_method: sudo
+  apt:
+    name: aptitude
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - aptitude
+    - bootstrap
+...
 ...
