@@ -4,9 +4,11 @@
   become_method: sudo
   ufw:
     rule: allow
-    src: "{{ haproxy_client_net }}"
+    src: "{{ item }}"
     port: "{{ haproxy_bind_port }}"
     proto: tcp
+  with_items:
+    - "{{ haproxy_client_net }}"
   tags:
     - ufw
     - haproxy
