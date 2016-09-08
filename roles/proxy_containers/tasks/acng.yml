@@ -4,9 +4,11 @@
   become_method: sudo
   ufw:
     rule: allow
-    src: "{{ acng_client_net }}"
+    src: "{{ item }}"
     port: "{{ acng_port }}"
     proto: tcp
+  with_items:
+    - "{{ acng_client_net }}"
   tags:
     - ufw
     - apt-cacher-ng

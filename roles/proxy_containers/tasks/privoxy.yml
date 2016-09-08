@@ -4,9 +4,11 @@
   become_method: sudo
   ufw:
     rule: allow
-    src: "{{ privoxy_client_net }}"
+    src: "{{ item }}"
     port: "{{ privoxy_port }}"
     proto: tcp
+  with_items:
+    - "{{ privoxy_client_net }}"
   tags:
     - ufw
     - privoxy
