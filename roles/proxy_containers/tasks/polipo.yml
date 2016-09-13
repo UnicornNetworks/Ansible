@@ -25,6 +25,7 @@
     pull: always
     restart_policy: on-failure
     restart_policy_retry: 3
+    hostname: "{{ ansible_nodename }}"
   tags:
     - docker_container
     - polipo

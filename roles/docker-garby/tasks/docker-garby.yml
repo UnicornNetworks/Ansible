@@ -12,6 +12,7 @@
       maxSecondsOld: "{{ maxSecondsOld }}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    hostname: "{{ ansible_nodename }}"
   tags:
     - docker_container
     - docker-garby
