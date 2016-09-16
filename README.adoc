@@ -9,29 +9,40 @@ INFO: This is a lab repository and it may break things.
 
 [source]
 ----
-roles
-roles/bootstrap
-roles/bootstrap/tasks
-roles/docker-garby
-roles/docker-garby/defaults
-roles/docker-garby/tasks
-roles/docker
-roles/docker/defaults
-roles/docker/handlers
-roles/docker/tasks
-roles/docker/templates
-roles/docker/vars
-roles/haproxy_containers
-roles/haproxy_containers/defaults
-roles/haproxy_containers/tasks
-roles/haproxy_containers/templates
-roles/proxy_containers
-roles/proxy_containers/defaults
-roles/proxy_containers/tasks
-roles/security
-roles/security/defaults
-roles/security/handlers
-roles/security/tasks
-roles/security/templates
-roles/security/vars
+   .
+   |-roles
+   |---acng_container
+   |-----defaults
+   |-----tasks
+   |---bootstrap
+   |-----tasks
+   |---docker
+   |-----defaults
+   |-----handlers
+   |-----tasks
+   |-----templates
+   |-----vars
+   |---docker-garby_container
+   |-----defaults
+   |-----tasks
+   |---haproxy_container
+   |-----defaults
+   |-----tasks
+   |-----templates
+   |---polipo_container
+   |-----defaults
+   |-----tasks
+   |---privoxy_container
+   |-----defaults
+   |-----tasks
+   |---security
+   |-----defaults
+   |-----handlers
+   |-----tasks
+   |-----templates
+   |-----vars
+   |---squid_container
+   |-----defaults
+   |-----tasks
+   |-----templates
 ----
