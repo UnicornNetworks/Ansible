@@ -79,3 +79,20 @@ refresh_pattern .               0       20%     4320
 access_log none
 cache_log /dev/null
 logfile_rotate 0
+
+# Remove proxy headers
+via off
+forwarded_for off
+
+request_header_access From deny all
+request_header_access Server deny all
+request_header_access WWW-Authenticate deny all
+request_header_access Link deny all
+request_header_access Cache-Control deny all
+request_header_access Proxy-Connection deny all
+request_header_access X-Cache deny all
+request_header_access X-Cache-Lookup deny all
+request_header_access Via deny all
+request_header_access X-Forwarded-For deny all
+request_header_access Pragma deny all
+request_header_access Keep-Alive deny all
