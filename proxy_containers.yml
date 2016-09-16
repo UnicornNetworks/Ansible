@@ -1,6 +1,0 @@
----
-- hosts: proxy
-  serial: 50%
-  roles:
-    - proxy_containers
-...

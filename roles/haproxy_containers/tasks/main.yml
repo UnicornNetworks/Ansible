@@ -1,4 +1,0 @@
----
-- include: ufw.yml
-- include: haproxy.yml
-...
