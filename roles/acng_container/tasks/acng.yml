@@ -1,0 +1,32 @@
+---
+- name: allow apt-cacher-ng traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ item }}"
+    port: "{{ acng_port }}"
+    proto: tcp
+  with_items:
+    - "{{ acng_client_net }}"
+  tags:
+    - ufw
+    - apt-cacher-ng
+
+- name: apt-cacher-ng container
+  docker:
+    name: apt-cacher-ng
+    image: konstruktoid/apt-cacher-ng
+    command: VerboseLog=1 Debug=7 ForeGround=1 PassThroughPattern=.*
+    state: reloaded
+    ports:
+    - "{{ acng_bind_address }}:{{ acng_port }}:{{ acng_port }}"
+    cap_drop: all
+    pull: always
+    restart_policy: on-failure
+    restart_policy_retry: 3
+    hostname: "{{ ansible_nodename }}"
+  tags:
+    - docker_container
+    - apt-cacher-ng
+...

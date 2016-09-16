@@ -1,0 +1,5 @@
+---
+polipo_client_net: [192.168.0.0/24, 192.168.1.0/24]
+polipo_bind_address: 0.0.0.0
+polipo_port: 8123
+...

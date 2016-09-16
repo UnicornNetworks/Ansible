@@ -1,0 +1,5 @@
+---
+squid_client_net: [192.168.0.0/24, 192.168.1.0/24]
+squid_bind_address: 0.0.0.0
+squid_port: 3128
+...

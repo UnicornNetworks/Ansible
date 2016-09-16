@@ -1,0 +1,35 @@
+---
+- name: allow privoxy traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ item }}"
+    port: "{{ privoxy_port }}"
+    proto: tcp
+  with_items:
+    - "{{ privoxy_client_net }}"
+  tags:
+    - ufw
+    - privoxy
+
+- name: privoxy container
+  docker:
+    name: privoxy
+    image: konstruktoid/privoxy
+    command: --no-daemon --user privoxy /etc/privoxy/config
+    state: reloaded
+    ports:
+    - "{{ privoxy_bind_address }}:{{ privoxy_port }}:{{ privoxy_port }}"
+    cap_drop: all
+    cap_add:
+      - setgid
+      - setuid
+    pull: always
+    restart_policy: on-failure
+    restart_policy_retry: 3
+    hostname: "{{ ansible_nodename }}"
+  tags:
+    - docker_container
+    - privoxy
+...

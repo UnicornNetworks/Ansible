@@ -1,0 +1,19 @@
+---
+- name: docker-garby container
+  docker:
+    name: docker-garby
+    image: konstruktoid/docker-garby
+    state: reloaded
+    pull: always
+    env:
+      excludeImages: "{{ excludeImages }}"
+      pullExcluded: "{{ pullExcluded }}"
+      logFile: "{{ logFile }}"
+      maxSecondsOld: "{{ maxSecondsOld }}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    hostname: "{{ ansible_nodename }}"
+  tags:
+    - docker_container
+    - docker-garby
+...

@@ -1,0 +1,31 @@
+---
+- name: allow squid traffic
+  become: yes
+  become_method: sudo
+  ufw:
+    rule: allow
+    src: "{{ item }}"
+    port: "{{ squid_port }}"
+    proto: tcp
+  with_items:
+    - "{{ squid_client_net }}"
+  tags:
+    - ufw
+    - squid
+
+- name: squid container
+  docker:
+    name: squid
+    image: konstruktoid/squid
+    state: reloaded
+    ports:
+    - "{{ squid_bind_address }}:{{ squid_port }}:{{ squid_port }}"
+    cap_drop: all
+    pull: always
+    restart_policy: on-failure
+    restart_policy_retry: 3
+    hostname: "{{ ansible_nodename }}"
+  tags:
+    - docker_container
+    - squid
+...
