@@ -1,5 +1,4 @@
 ---
-
 - name: create squid directory
   become: yes
   become_method: sudo
@@ -46,6 +45,9 @@
     ports:
     - "{{ squid_bind_address }}:{{ squid_port }}:{{ squid_port }}"
     cap_drop: all
+    cap_add:
+      - setgid
+      - setuid
     pull: always
     restart_policy: on-failure
     restart_policy_retry: 3
