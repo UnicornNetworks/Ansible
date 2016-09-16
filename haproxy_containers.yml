@@ -5,5 +5,5 @@
 - hosts: haproxy
   serial: 50%
   roles:
-    - haproxy_containers
+    - haproxy_container
 ...
