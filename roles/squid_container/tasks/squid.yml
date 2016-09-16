@@ -23,20 +23,6 @@
   tags:
     - squid
 
-- name: allow squid traffic
-  become: yes
-  become_method: sudo
-  ufw:
-    rule: allow
-    src: "{{ item }}"
-    port: "{{ squid_port }}"
-    proto: tcp
-  with_items:
-    - "{{ squid_client_net }}"
-  tags:
-    - ufw
-    - squid
-
 - name: squid container
   docker:
     name: squid
