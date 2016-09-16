@@ -4,4 +4,9 @@
   roles:
     - security
     - docker
+
+- hosts: squid
+  serial: 50%
+  roles:
+    - squid_container
 ...
