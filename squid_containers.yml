@@ -2,5 +2,5 @@
 - hosts: squid
   serial: 50%
   roles:
-    - squid
+    - squid_container
 ...

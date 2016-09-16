@@ -1,4 +1,29 @@
 ---
+
+- name: create squid directory
+  become: yes
+  become_method: sudo
+  file:
+    path: /etc/squid/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - squid
+
+- name: add squid config
+  become: yes
+  become_method: sudo
+  template:
+    src: squid.conf.j2
+    dest: /etc/squid/squid.conf
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+    - squid
+
 - name: allow squid traffic
   become: yes
   become_method: sudo
@@ -25,6 +50,8 @@
     restart_policy: on-failure
     restart_policy_retry: 3
     hostname: "{{ ansible_nodename }}"
+    volumes:
+      - /etc/squid/squid.conf:/etc/squid/squid.conf:ro
   tags:
     - docker_container
     - squid
