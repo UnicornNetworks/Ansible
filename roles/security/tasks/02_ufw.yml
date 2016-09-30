@@ -6,6 +6,7 @@
     state: reset
   tags:
     - ufw
+    - security
 
 - name: allow ssh ufw
   become: yes
@@ -17,6 +18,10 @@
     proto: tcp
   with_items:
     - "{{ sshd_admin_net }}"
+  tags:
+    - ufw
+    - ssh
+    - security
 
 - name: enable ufw
   become: yes
@@ -27,4 +32,5 @@
     logging: low
   tags:
     - ufw
+    - security
 ...

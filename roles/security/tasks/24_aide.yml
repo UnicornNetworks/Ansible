@@ -11,6 +11,7 @@
     group: root
   tags:
     - aide
+    - security
 
 - name: aide timer
   become: yes
@@ -28,6 +29,7 @@
     - start aidecheck
   tags:
     - aide
+    - security
 
 - name: /etc/systemd/system/aidecheck.timer
   become: yes
@@ -38,6 +40,7 @@
   when: ansible_bios_version == "VirtualBox"
   tags:
     - aide
+    - security
 
 - name: remove /etc/systemd/system/aidecheck.service
   become: yes
@@ -48,6 +51,7 @@
   when: ansible_bios_version == "VirtualBox"
   tags:
     - aide
+    - security
 
 - name: mask virtualbox aidecheck
   shell: echo 'disabling aide timer on VirtualBox'
@@ -60,4 +64,5 @@
     - reload systemd
   tags:
     - aide
+    - security
 ...

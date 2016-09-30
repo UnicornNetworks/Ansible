@@ -13,4 +13,5 @@
     - restart sysctl
   tags:
     - sysctl
+    - security
 ...

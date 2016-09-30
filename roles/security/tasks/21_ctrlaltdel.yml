@@ -5,4 +5,5 @@
   command: systemctl mask ctrl-alt-del.target
   tags:
     - ctrl-alt-del
+    - security
 ...

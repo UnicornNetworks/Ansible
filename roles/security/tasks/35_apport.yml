@@ -15,4 +15,5 @@
     - mask apport
   tags:
     - apport
+    - security
 ...

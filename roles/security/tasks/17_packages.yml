@@ -21,6 +21,7 @@
   tags:
     - apt
     - packages
+    - security
 
 - name: virtualbox package installation
   become: yes
@@ -37,4 +38,5 @@
     - apt
     - packages
     - virtualbox
+    - security
 ...

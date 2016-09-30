@@ -10,4 +10,7 @@
   ignore_errors: true
   with_items:
     - "{{ suid_sgid_blacklist }}"
+  tags:
+    - suid
+    - security
 ...

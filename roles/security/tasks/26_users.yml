@@ -16,4 +16,5 @@
   ignore_errors: yes
   tags:
     - users
+    - security
 ...

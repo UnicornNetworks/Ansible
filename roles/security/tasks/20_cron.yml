@@ -13,6 +13,7 @@
     - /etc/at.allow
   tags:
     - cron
+    - security
 
 - name: allow root cron and at
   become: yes
@@ -31,4 +32,5 @@
     - reload systemd
   tags:
     - cron
+    - security
 ...

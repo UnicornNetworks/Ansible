@@ -11,6 +11,7 @@
     group: root
   tags:
     - access.conf
+    - security
 
 - name: securetty
   become: yes
@@ -24,4 +25,5 @@
     group: root
   tags:
     - securetty
+    - security
 ...

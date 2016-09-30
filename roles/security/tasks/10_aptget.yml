@@ -7,6 +7,7 @@
     cache_valid_time: 1800
   tags:
     - apt
+    - security
 
 - name: apt upgrade
   become: yes
@@ -18,4 +19,5 @@
     - apt-get autoremove
   tags:
     - apt
+    - security
 ...

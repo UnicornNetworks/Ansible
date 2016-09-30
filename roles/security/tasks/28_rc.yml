@@ -12,4 +12,5 @@
     backrefs: yes
   tags:
     - rc
+    - security
 ...

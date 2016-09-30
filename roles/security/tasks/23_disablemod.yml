@@ -11,4 +11,5 @@
     group: root
   tags:
     - modprobe
+    - security
 ...
