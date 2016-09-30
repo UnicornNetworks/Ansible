@@ -19,6 +19,7 @@
     cache_valid_time: 1800
   tags:
     - apt
+    - bootstrap
 
 - name: bootstrap - install ufw
   become: yes
