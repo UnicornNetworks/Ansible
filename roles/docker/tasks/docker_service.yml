@@ -16,7 +16,7 @@
   become_method: sudo
   template:
     src: docker.service.j2
-    dest: /lib/systemd/system/docker.service
+    dest: /etc/systemd/system/docker.service
     mode: 0644
     owner: root
     group: root
