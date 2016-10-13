@@ -3,11 +3,8 @@
   become: yes
   become_method: sudo
   apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: "{{ gpg_fingerprint }}"
+    url: https://sks-keyservers.net/pks/lookup?op=get&search=0x{{ gpg_fingerprint }}
     state: present
-  ignore_errors:
-    - yes
   tags:
     - docker
 
