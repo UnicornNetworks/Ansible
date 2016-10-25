@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
   roles:
-    - security
+    - konstruktoid.hardening
     - docker
 ...

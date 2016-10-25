@@ -3,6 +3,6 @@
   gather_facts: False
   roles:
     - bootstrap
-    - security
+    - konstruktoid.hardening
     - docker
 ...

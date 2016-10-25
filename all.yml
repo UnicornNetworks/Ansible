@@ -2,7 +2,7 @@
 - hosts: all
   serial: 50%
   roles:
-    - security
+    - konstruktoid.hardening
     - docker
 
 - hosts: squid
