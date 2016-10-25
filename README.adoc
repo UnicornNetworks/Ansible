@@ -3,46 +3,40 @@
 
 image::https://www.ansible.com/hs-fs/hubfs/Official_Logos/Ansible-CircleA-BlackOutline.png[Ansible]
 
-Docker daemon, containers and security playbooks.
+Docker daemon and container playbooks, additional roles are available at https://galaxy.ansible.com/konstruktoid/[Ansible Galaxy].
 
 INFO: This is a lab repository and it may break things.
 
 [source]
 ----
-   .
-   |-roles
-   |---acng_container
-   |-----defaults
-   |-----tasks
-   |---bootstrap
-   |-----tasks
-   |---docker
-   |-----defaults
-   |-----handlers
-   |-----tasks
-   |-----templates
-   |-----vars
-   |---docker-garby_container
-   |-----defaults
-   |-----tasks
-   |---haproxy_container
-   |-----defaults
-   |-----tasks
-   |-----templates
-   |---polipo_container
-   |-----defaults
-   |-----tasks
-   |---privoxy_container
-   |-----defaults
-   |-----tasks
-   |---security
-   |-----defaults
-   |-----handlers
-   |-----tasks
-   |-----templates
-   |-----vars
-   |---squid_container
-   |-----defaults
-   |-----tasks
-   |-----templates
+.
+└── roles
+    ├── acng_container
+    │   ├── defaults
+    │   └── tasks
+    ├── bootstrap
+    │   └── tasks
+    ├── docker
+    │   ├── defaults
+    │   ├── handlers
+    │   ├── tasks
+    │   ├── templates
+    │   └── vars
+    ├── docker-garby_container
+    │   ├── defaults
+    │   └── tasks
+    ├── haproxy_container
+    │   ├── defaults
+    │   ├── tasks
+    │   └── templates
+    ├── polipo_container
+    │   ├── defaults
+    │   └── tasks
+    ├── privoxy_container
+    │   ├── defaults
+    │   └── tasks
+    └── squid_container
+        ├── defaults
+        ├── tasks
+        └── templates
 ----
