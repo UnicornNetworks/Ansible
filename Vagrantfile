@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
 
   (1..3).each do |i|
     config.vm.define "node#{i}" do |node|
-    config.vm.network "private_network", ip:"192.168.13.1#{i}"
+    config.vm.network "private_network", ip:"10.2.3.4#{i}"
     config.vm.hostname = "node#{i}"
     node.vm.provision "ansible" do |p|
       p.playbook = "bootstrap.yml"
