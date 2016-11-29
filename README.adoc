@@ -20,8 +20,7 @@ INFO: This is a lab repository and it may break things.
     │   ├── defaults
     │   ├── handlers
     │   ├── tasks
-    │   ├── templates
-    │   └── vars
+    │   └── templates
     ├── docker-garby_container
     │   ├── defaults
     │   └── tasks
