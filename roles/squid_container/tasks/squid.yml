@@ -1,6 +1,6 @@
 ---
 - name: create squid directory
-  become: yes
+  become: 'yes'
   become_method: sudo
   file:
     path: /etc/squid/
@@ -12,7 +12,7 @@
     - squid
 
 - name: add squid config
-  become: yes
+  become: 'yes'
   become_method: sudo
   template:
     src: squid.conf.j2
@@ -24,12 +24,12 @@
     - squid
 
 - name: squid container
-  docker:
+  docker_container:
     name: squid
     image: konstruktoid/squid
     state: reloaded
     ports:
-    - "{{ squid_bind_address }}:{{ squid_port }}:{{ squid_port }}"
+      - "{{ squid_bind_address }}:{{ squid_port }}:{{ squid_port }}"
     cap_drop: all
     cap_add:
       - setgid

@@ -1,6 +1,6 @@
 ---
 - hosts: bootstrap
-  gather_facts: False
+  gather_facts: false
   roles:
     - bootstrap
     - konstruktoid.hardening

@@ -1,6 +1,6 @@
 ---
 - name: allow privoxy traffic
-  become: yes
+  become: 'yes'
   become_method: sudo
   ufw:
     rule: allow
@@ -14,13 +14,13 @@
     - privoxy
 
 - name: privoxy container
-  docker:
+  docker_container:
     name: privoxy
     image: konstruktoid/privoxy
     command: --no-daemon --user privoxy /etc/privoxy/config
     state: reloaded
     ports:
-    - "{{ privoxy_bind_address }}:{{ privoxy_port }}:{{ privoxy_port }}"
+      - "{{ privoxy_bind_address }}:{{ privoxy_port }}:{{ privoxy_port }}"
     cap_drop: all
     cap_add:
       - setgid

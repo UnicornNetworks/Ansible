@@ -1,6 +1,6 @@
 ---
 excludeImages: /usr/bin/docker-garby.exclude
-pullExcluded: yes
+pullExcluded: 'yes'
 logFile: syslog
 maxSecondsOld: 3600
 ...

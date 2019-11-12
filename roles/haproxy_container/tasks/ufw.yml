@@ -1,6 +1,6 @@
 ---
 - name: allow haproxy traffic
-  become: yes
+  become: 'yes'
   become_method: sudo
   ufw:
     rule: allow

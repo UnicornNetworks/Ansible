@@ -1,8 +1,15 @@
 ---
-- name: bootstrap - python installation
-  become: yes
+- name: check if host is alive
+  command: /bin/true
+  register: alive
+  tags:
+    - skip_ansible_lint
+
+- name: bootstrap - python3 installation
+  become: 'yes'
   become_method: sudo
-  raw: apt -y install python --no-install-recommends
+  raw: apt -y install python3 --no-install-recommends
+  when: alive is succeeded
   tags:
     - bootstrap
 
@@ -12,34 +19,34 @@
     - bootstrap
 
 - name: apt update
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt:
-    update_cache: yes
+    update_cache: 'yes'
     cache_valid_time: 1800
   tags:
     - apt
     - bootstrap
 
 - name: bootstrap - install ufw
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt:
     name: ufw
     state: latest
-    update_cache: yes
+    update_cache: 'yes'
     cache_valid_time: 3600
   tags:
     - ufw
     - bootstrap
 
 - name: bootstrap - install aptitude
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt:
     name: aptitude
     state: latest
-    update_cache: yes
+    update_cache: 'yes'
     cache_valid_time: 3600
   tags:
     - aptitude

@@ -1,6 +1,6 @@
 ---
 - name: allow apt-cacher-ng traffic
-  become: yes
+  become: 'yes'
   become_method: sudo
   ufw:
     rule: allow
@@ -14,13 +14,13 @@
     - apt-cacher-ng
 
 - name: apt-cacher-ng container
-  docker:
+  docker_container:
     name: apt-cacher-ng
     image: konstruktoid/apt-cacher-ng
     command: VerboseLog=1 Debug=7 ForeGround=1 PassThroughPattern=.*
     state: reloaded
     ports:
-    - "{{ acng_bind_address }}:{{ acng_port }}:{{ acng_port }}"
+      - "{{ acng_bind_address }}:{{ acng_port }}:{{ acng_port }}"
     cap_drop: all
     pull: always
     restart_policy: on-failure

@@ -1,6 +1,6 @@
 ---
 - name: allow squid traffic
-  become: yes
+  become: 'yes'
   become_method: sudo
   ufw:
     rule: allow

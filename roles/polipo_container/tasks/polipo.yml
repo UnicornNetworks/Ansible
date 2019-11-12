@@ -1,6 +1,6 @@
 ---
 - name: allow polipo traffic
-  become: yes
+  become: 'yes'
   become_method: sudo
   ufw:
     rule: allow
@@ -14,13 +14,13 @@
     - polipo
 
 - name: polipo container
-  docker:
+  docker_container:
     name: polipo
     image: konstruktoid/polipo
     command: proxyAddress=::0
     state: reloaded
     ports:
-    - "{{ polipo_bind_address }}:{{ polipo_port }}:{{ polipo_port }}"
+      - "{{ polipo_bind_address }}:{{ polipo_port }}:{{ polipo_port }}"
     cap_drop: all
     pull: always
     restart_policy: on-failure

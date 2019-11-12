@@ -1,6 +1,6 @@
 ---
 - name: create haproxy directory
-  become: yes
+  become: 'yes'
   become_method: sudo
   file:
     path: /etc/haproxy/
@@ -12,7 +12,7 @@
     - haproxy
 
 - name: add haproxy config
-  become: yes
+  become: 'yes'
   become_method: sudo
   template:
     src: haproxy.cfg.j2
@@ -24,12 +24,12 @@
     - haproxy
 
 - name: haproxy container
-  docker:
+  docker_container:
     name: haproxy
     image: konstruktoid/haproxy
     state: reloaded
     ports:
-    - "{{ haproxy_bind_address }}:{{ haproxy_bind_port }}:{{ haproxy_bind_port }}"
+      - "{{ haproxy_bind_address }}:{{ haproxy_bind_port }}:{{ haproxy_bind_port }}"
     cap_drop: all
     cap_add:
       - sys_chroot

@@ -1,6 +1,6 @@
 ---
 - name: docker-garby container
-  docker:
+  docker_container:
     name: docker-garby
     image: konstruktoid/docker-garby
     state: reloaded
