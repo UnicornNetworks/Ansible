@@ -1,20 +1,20 @@
 ---
 - name: docker gpg key
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt_key:
-    url: https://sks-keyservers.net/pks/lookup?op=get&search=0x{{ gpg_fingerprint }}
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
   tags:
     - docker
 
 - name: apt docker.list
-  become: yes
+  become: 'yes'
   become_method: sudo
   template:
     src: docker.repo.j2
     dest: /etc/apt/sources.list.d/docker.list
-    backup: yes
+    backup: 'yes'
     mode: 0644
     owner: root
     group: root
@@ -23,20 +23,20 @@
     - apt
 
 - name: apt update
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt:
-    update_cache: yes
+    update_cache: 'yes'
   tags:
     - apt
 
 - name: docker
-  become: yes
+  become: 'yes'
   become_method: sudo
   apt:
-    name: docker-engine
+    name: docker-ce
     state: latest
-    update_cache: yes
+    update_cache: 'yes'
     cache_valid_time: 3600
   tags:
     - docker

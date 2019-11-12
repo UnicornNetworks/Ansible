@@ -1,6 +1,6 @@
 ---
 - name: restart docker
-  become: yes
+  become: 'yes'
   become_method: sudo
   service:
     name: docker
@@ -9,14 +9,15 @@
     - docker
 
 - name: reload systemd
-  become: yes
+  become: 'yes'
   become_method: sudo
-  command: systemctl daemon-reload
+  systemd:
+    daemon_reload: 'yes'
   tags:
     - systemd
 
 - name: restart auditd
-  become: yes
+  become: 'yes'
   become_method: sudo
   service:
     name: auditd
@@ -25,7 +26,7 @@
     - auditd
 
 - name: generate auditd
-  become: yes
+  become: 'yes'
   become_method: sudo
   command: augenrules
   tags:

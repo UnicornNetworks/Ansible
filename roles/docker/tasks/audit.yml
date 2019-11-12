@@ -1,16 +1,16 @@
 ---
 - name: add docker audit
-  become: yes
+  become: 'yes'
   become_method: sudo
   template:
     src: audit.rules.j2
-    dest:  /etc/audit/rules.d/docker.rules
+    dest: /etc/audit/rules.d/docker.rules
     mode: 0600
     owner: root
     group: root
   notify:
-        - generate auditd
-        - restart auditd
+    - generate auditd
+    - restart auditd
   tags:
     - docker
     - auditd

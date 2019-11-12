@@ -1,35 +1,27 @@
 ---
-- name: install python-pip
-  become: yes
+- name: install python3-pip
+  become: 'yes'
   become_method: sudo
   apt:
-    name: python-pip
+    name: python3-pip
     state: latest
-    install_recommends: no
+    install_recommends: 'no'
   tags: python
 
-- name: install python-setuptools
-  become: yes
+- name: install python3-setuptools
+  become: 'yes'
   become_method: sudo
   apt:
-    name: python-setuptools
+    name: python3-setuptools
     state: latest
-    install_recommends: no
+    install_recommends: 'no'
   tags: python
 
-- name: install python-pip
-  become: yes
+- name: install python3 docker
+  become: 'yes'
   become_method: sudo
-  easy_install:
-    name: pip
-  tags:
-    - python
-
-- name: install docker-py
-  become: yes
-  become_method: sudo
-  easy_install:
-    name: docker-py
+  pip:
+    name: docker
   tags:
     - docker
     - python

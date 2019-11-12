@@ -1,18 +1,18 @@
 ---
 - name: sysctl
-  become: yes
+  become: 'yes'
   become_method: sudo
   sysctl:
     name: net.ipv4.ip_forward
     value: 1
-    sysctl_set: yes
+    sysctl_set: 'yes'
     state: present
-    reload: yes
+    reload: 'yes'
   tags:
     - sysctl
 
 - name: docker systemd service
-  become: yes
+  become: 'yes'
   become_method: sudo
   template:
     src: docker.service.j2
@@ -27,13 +27,13 @@
     - docker
 
 - name: docker running and enabled
-  become: yes
+  become: 'yes'
   become_method: sudo
   service:
     name: docker
-    state: running
-    enabled: yes
-  ignore_errors: yes
+    state: started
+    enabled: 'yes'
+  ignore_errors: 'yes'
   tags:
     - docker
 ...
