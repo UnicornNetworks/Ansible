@@ -15,9 +15,7 @@ elif [ -z "$KNOWN_HOSTS" ] || [ ! -f "$KNOWN_HOSTS" ]; then
 fi
 
 if [ "$1" = "vagrant" ]; then
-  if [ -f "./hosts" ]; then
-    echo "./hosts file exists. Won't overwrite."
-  else
+  if [ ! -f "./hosts" ] || [ "$2" = "hosts" ]; then
     echo "Generating Ansible hosts file using Vagrant."
     {
       echo "[vagrant]"
@@ -28,6 +26,11 @@ if [ "$1" = "vagrant" ]; then
         ssh-keyscan -p"${VAGRANT_SSH[3]}" "${VAGRANT_SSH[1]}" >> "$KNOWN_HOSTS" 2>/dev/null
       done
     } > ./hosts
+    HOSTFILE="./hosts"
+  elif [ -f "./hosts" ]; then
+    echo "./hosts file exists. Won't overwrite."
+  else
+    echo "vagrant hosts flag not set."
   fi
 
   if ! command -v vagrant 1>/dev/null; then
@@ -37,8 +40,6 @@ if [ "$1" = "vagrant" ]; then
   if ! vagrant validate Vagrantfile; then
     exit 1
   fi
-
-  HOSTFILE="./hosts"
 fi
 
 if ! find ./ -type f -name '*.y*ml' ! -name '.*' -print0 | \
@@ -65,12 +66,12 @@ if [ -f /etc/ansible/hosts ] && [ "$1" != "vagrant" ]; then
 
   if [ $HOSTRESOLV = 0 ]; then
     echo
-    #echo "Generating $KNOWN_HOSTS. Saving current to $KNOWN_HOSTS.bak"
-    #cp -v "$KNOWN_HOSTS" "$KNOWN_HOSTS.bak"
-    #sort "$TMPHOSTS" | uniq > "$KNOWN_HOSTS"
+    echo "Generating $KNOWN_HOSTS. Saving current to $KNOWN_HOSTS.bak"
+    cp -v "$KNOWN_HOSTS" "$KNOWN_HOSTS.bak"
+    sort "$TMPHOSTS" | uniq > "$KNOWN_HOSTS"
   fi
 fi
 
 rm "$TMPHOSTS"
 
-ansible-playbook all.yml -i "$HOSTFILE" --extra-vars "sshd_admin_net=$NETWORK/24 ssh_max_auth_tries=6 ansible_python_interpreter=/usr/bin/python3" -K
+ansible-playbook all.yml -i "$HOSTFILE" --extra-vars "sshd_admin_net=$NETWORK/24 sshd_max_auth_tries=6 ansible_python_interpreter=/usr/bin/python3" -K
