@@ -21,8 +21,8 @@ Vagrant.configure(2) do |config|
       }
       p.extra_vars = {
         "sshd_admin_net" => "0.0.0.0/0",
-        "ssh_allow_groups" => "vagrant sudo ubuntu",
-        "ssh_max_auth_tries" => "6",
+        "sshd_allow_groups" => "vagrant sudo ubuntu",
+        "sshd_max_auth_tries" => "6",
         "ansible_python_interpreter" => "/usr/bin/python3",
       }
       end
@@ -42,8 +42,8 @@ Vagrant.configure(2) do |config|
       }
       p.extra_vars = {
         "sshd_admin_net" => "0.0.0.0/0",
-        "ssh_allow_groups" => "vagrant sudo ubuntu",
-        "ssh_max_auth_tries" => "6",
+        "sshd_allow_groups" => "vagrant sudo ubuntu",
+        "sshd_max_auth_tries" => "6",
         "ansible_python_interpreter" => "/usr/bin/python3",
       }
       end
