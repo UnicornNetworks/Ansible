@@ -1,8 +1,7 @@
 ---
-- include: apt_transport.yml
-- include: docker_apt.yml
-- include: docker_service.yml
+- include: docker_install.yml
 - include: docker_python.yml
 - include: audit.yml
 - include: docker_group.yml
+- include: docker_service.yml
 ...
