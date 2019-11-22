@@ -7,6 +7,8 @@ Docker daemon and container playbooks, additional roles are available at https:/
 
 INFO: This is a lab repository and it may break things.
 
+Tested on `ubuntu/bionic64` and `ubuntu/disco64` using Vagrant.
+
 [source]
 ----
 .
