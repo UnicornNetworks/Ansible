@@ -74,4 +74,4 @@ fi
 
 rm "$TMPHOSTS"
 
-ansible-playbook all.yml -i "$HOSTFILE" --extra-vars "sshd_admin_net=$NETWORK/24 sshd_max_auth_tries=6 ansible_python_interpreter=/usr/bin/python3" -K
+ansible-playbook all.yml -i "$HOSTFILE" --extra-vars "sshd_allow_groups='vagrant sudo ubuntu' sshd_admin_net=$NETWORK/24 sshd_max_auth_tries=6 ansible_python_interpreter=/usr/bin/python3" -K
