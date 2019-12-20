@@ -15,7 +15,7 @@ elif [ -z "$KNOWN_HOSTS" ] || [ ! -f "$KNOWN_HOSTS" ]; then
 fi
 
 if [ "$1" = "vagrant" ]; then
-  if [ ! -f "./hosts" ] || [ "$2" = "hosts" ]; then
+  if [ ! -f "./hosts" ] && [ ! -f "./.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory" ] || [ "$2" = "hosts" ]; then
     echo "Generating Ansible hosts file using Vagrant."
     {
       echo "[vagrant]"
@@ -27,10 +27,16 @@ if [ "$1" = "vagrant" ]; then
       done
     } > ./hosts
     HOSTFILE="./hosts"
+  elif [ -f "./.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory" ]; then
+    HOSTFILE="./.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory"
   elif [ -f "./hosts" ]; then
     echo "./hosts file exists. Won't overwrite."
   else
     echo "vagrant hosts flag not set."
+  fi
+
+  if [ -n "$HOSTFILE" ]; then
+    echo "Using $HOSTFILE."
   fi
 
   if ! command -v vagrant 1>/dev/null; then
