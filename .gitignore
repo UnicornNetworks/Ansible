@@ -1,3 +1,7 @@
 *.retry
 *.log
+*.rpm
+*.deb
+*.html
 hosts
+.vagrant
